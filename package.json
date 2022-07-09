@@ -1,0 +1,39 @@
+{
+  "name": "@thatconference/insomnia-plugin-that-signing",
+  "version": "1.0.0",
+  "description": "Insomnia plugin for signing that conference requests",
+  "main": "index.js",
+  "scripts": {
+    "npm:publish": "npm publish . --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thatconference/insomnia-plugin-that-signing.git"
+  },
+  "keywords": [
+    "insomnia",
+    "plugin",
+    "request-signing",
+    "HMAC"
+  ],
+  "author": "THAT Conference",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/thatconference/insomnia-plugin-that-signing/issues"
+  },
+  "homepage": "https://github.com/thatconference/insomnia-plugin-that-signing#readme",
+  "insomnia": {
+    "name": "that-signing-plugin",
+    "displayName": "THAT Signing Plugin",
+    "description": "Insomnia request singing for THAT Requests",
+    "publisher": {
+      "name": "THAT Conference",
+      "icon": "https://storage.googleapis.com/that-bucket/images/TC-Logo-NoLocation-0.5x.png"
+    },
+    "unlisted": false
+  },
+  "dependencies": {
+    "@thatconference/api": "^2.9.2",
+    "dotenv": "^16.0.1"
+  }
+}
