@@ -29,6 +29,19 @@ module.exports.templateTags = [
 
 module.exports.requestHooks = [
   (context) => {
+    const allHeaders = context.request.getHeaders();
+    const header = allHeaders.filter((h) => h.value === placeholderText);
+    console.log("header", header);
+    if (!header || header.length < 1){
+      console.log(`header value not set, leaving plugin`);
+      return;
+    }
+    if (header?.length > 1){
+      const msg = "multiple headers found with placement text";
+      console.log(msg);
+      throw Error(msg);}
+    const headerName = header[0].name;
+    console.log(`using ${headerName} for singing signature`);
     let payload = context.request.getBody();
     if (signingKey) {
       if (payload?.text) {
@@ -43,19 +56,6 @@ module.exports.requestHooks = [
       return;
     }
     console.log("payload", payload);
-    const allHeaders = context.request.getHeaders();
-    const header = allHeaders.filter((h) => h.value === placeholderText);
-    console.log("header", header);
-    if (!header || header.length < 1){
-      console.log(`header value not set, leaving plugin`);
-      return;
-    }
-    if (header?.length > 1){
-      const msg = "multiple headers found with placement text";
-      console.log(msg);
-      throw Error(msg);}
-    const headerName = header[0].name;
-    console.log(`using ${headerName} for singing signature`);
     const thatSigning = security.requestSigning;
     const requestSigning = thatSigning({ signingKey });
     const signature = requestSigning.signRequest(payload);
