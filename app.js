@@ -34,10 +34,12 @@ module.exports.requestHooks = [
       if (payload?.text) {
         payload = JSON.parse(payload.text);
       } else {
+        console.log('error: no request body to sign');
         throw new Error("There is no request body to sign");
       }
     } else {
       // we don't need this good to fire if the template and key isn't set
+      console.log('no signing key set, leaving plugin');
       return;
     }
     console.log("payload", payload);

@@ -1,8 +1,8 @@
 {
   "name": "@thatconference/insomnia-plugin-that-signing",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Insomnia plugin for signing that conference requests",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "npm:publish": "npm publish . --access public"
   },
@@ -27,8 +27,8 @@
     "displayName": "THAT Signing Plugin",
     "description": "Insomnia request singing for THAT Requests",
     "publisher": {
-      "name": "THAT Conference",
-      "icon": "https://storage.googleapis.com/that-bucket/images/TC-Logo-NoLocation-0.5x.png"
+      "name": "THAT Labs",
+      "icon": "https://storage.googleapis.com/that-bucket/images/THAT-Conference-logo-edge.svg"
     },
     "unlisted": false
   },
