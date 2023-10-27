@@ -1,6 +1,6 @@
 {
   "name": "@thatconference/insomnia-plugin-that-signing",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Insomnia plugin for signing that conference requests",
   "main": "app.js",
   "scripts": {

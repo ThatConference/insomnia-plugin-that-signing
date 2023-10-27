@@ -38,7 +38,7 @@ module.exports.requestHooks = [
         throw new Error("There is no request body to sign");
       }
     } else {
-      // we don't need this good to fire if the template and key isn't set
+      // we don't need this goo to fire if the template and key isn't set
       console.log('no signing key set, leaving plugin');
       return;
     }
@@ -46,15 +46,24 @@ module.exports.requestHooks = [
     const allHeaders = context.request.getHeaders();
     const header = allHeaders.filter((h) => h.value === placeholderText);
     console.log("header", header);
-    if (header?.length > 1)
-      throw Error("multiple headers found with placement text");
+    if (!header || header.length < 1){
+      console.log(`header value not set, leaving plugin`);
+      return;
+    }
+    if (header?.length > 1){
+      const msg = "multiple headers found with placement text";
+      console.log(msg);
+      throw Error(msg);}
     const headerName = header[0].name;
+    console.log(`using ${headerName} for singing signature`);
     const thatSigning = security.requestSigning;
     const requestSigning = thatSigning({ signingKey });
     const signature = requestSigning.signRequest(payload);
     console.log("signature", signature);
     if (signature?.isOk !== true || !signature?.thatSig) {
-      throw new Error(`unable to sign request: ${signature?.message}`);
+      const msg = `unable to sign request: ${signature?.message}`;
+      console.log(msg);
+      throw new Error(msg);
     }
 
     context.request.setHeader(headerName, signature.thatSig);
