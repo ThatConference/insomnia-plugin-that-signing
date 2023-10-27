@@ -17,7 +17,7 @@ After refreshing the Plugins tab in Insomnia you should see this plugin listed.
 
 ## Usage
 
-The signature needs to be sent as a Request Header. Setting up your header in Insomnia:  
+The signature needs to be sent as a Request Header. The plugin supports any header name. Setting up your header in Insomnia for THAT:  
 Header name: `that-request-signature`  
 Header Value: for the header's value, press <ctrl+space> to get a list of Insomnia `tags`. Use the `THAT Signature` tag. When you click on the tag a form for values is opened. The `Signing Key` field is required. Set your environment value for the signing key in this field.
 
